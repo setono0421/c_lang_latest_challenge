@@ -1,8 +1,10 @@
+///Shift_JISã§ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã—ã¦ã¾ã™
+
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>//atoiŠÖ”‚ğg—p‚·‚é‚½‚ß
+#include <stdlib.h>//atoié–¢æ•°ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚
 
-//\‘¢‘Ì(¶“k‚Ìƒf[ƒ^‚Ğ‚ÈŒ`)
+//æ§‹é€ ä½“(ç”Ÿå¾’ã®ãƒ‡ãƒ¼ã‚¿ã²ãªå½¢)
 typedef struct
 {
     int   id;
@@ -10,70 +12,70 @@ typedef struct
     int   koku;
     int   suu;
     int   ei;
-}student; //student‚Æ‚¢‚¤Œ^
+}student; //studentã¨ã„ã†å‹
 
-void student_print(student data);//studentprint‚Ì(Œ^‚Å‚ ‚éstudent •Ï”–¼data)
+void student_print(student data);//studentprintã®(å‹ã§ã‚ã‚‹student å¤‰æ•°ådata)
 
 int main(void)
-///ƒƒCƒ“ˆ—
+///ãƒ¡ã‚¤ãƒ³å‡¦ç†
 {
-  student data; //studentŒ^‚ÌŠÖ”data
-  student data2[30];//case3—p
-  char select[256];//‘I‘ğˆ
-  //char dummy;/*[Enter]ƒL[—p*/
-  //case2ˆÈ~
-  int inp_id;//“ü—Í‚³‚ê‚½ŠwĞ”Ô†
-  char inp_id_l[256];//“ü—Í‚³‚ê‚½ŠwĞ”Ô†‚ğ•¶š‚©‚ç”š‚É•ÏŠ·‚·‚é‚½‚ß‚Ì•Ï”
-  //case3ˆÈ~
-  int i;//‰ñ”ƒJƒEƒ“ƒg—p•Ï”
-  int stu_sum;//¶“k‚Ì‡Œv”
-  int sum_koku;//‘Sˆõ‚Ì‘Œê‘”“_
-  int sum_suu;//”Šw
-  int sum_ei;//‰pŒê
-  int sum_all;//‘Sˆõ‚Ì‘‡‘”“_
-  double ave_koku;//‘Œê‚Ì•½‹Ï“_
-  double ave_suu;//”Šw
-  double ave_ei;//‰pŒê
-  double ave_all;//‘S‘Ì‚Ì•½‹Ï“_
-  //case4ˆÈ~
-  int max_koku;//‘Œê‚ÌÅ‚“_
-  int max_suu;//”Šw‚ÌÅ‚“_
-  int max_ei;//‰pŒê‚ÌÅ‚“_
-  int max_all;//‘‡‚ÌÅ‚“_
-  int stu1_all[4];//¶“k1l‚Ì‡Œv“_
-  //case5ˆÈ~
-  int j;//i‚æ‚è‚àˆê‚ÂŒã‚Ì”’l‚ğ•\‚·•Ï”
-  student temp;//\‘¢‘Ì‚ğˆê“I‚É“¦‚ª‚·•Ï”
-  //case6ˆÈ~
-  char select_in_case6[256];//case6‚Ì’†‚Ì‘I‘ğˆ
+  student data; //studentå‹ã®é–¢æ•°data
+  student data2[30];//case3ç”¨
+  char select[256];//é¸æŠè‚¢
+  //char dummy;/*[Enter]ã‚­ãƒ¼ç”¨*/
+  //case2ä»¥é™
+  int inp_id;//å…¥åŠ›ã•ã‚ŒãŸå­¦ç±ç•ªå·
+  char inp_id_l[256];//å…¥åŠ›ã•ã‚ŒãŸå­¦ç±ç•ªå·ã‚’æ–‡å­—ã‹ã‚‰æ•°å­—ã«å¤‰æ›ã™ã‚‹ãŸã‚ã®å¤‰æ•°
+  //case3ä»¥é™
+  int i;//å›æ•°ã‚«ã‚¦ãƒ³ãƒˆç”¨å¤‰æ•°
+  int stu_sum;//ç”Ÿå¾’ã®åˆè¨ˆæ•°
+  int sum_koku;//å…¨å“¡ã®å›½èªç·æ•°ç‚¹
+  int sum_suu;//æ•°å­¦
+  int sum_ei;//è‹±èª
+  int sum_all;//å…¨å“¡ã®ç·åˆç·æ•°ç‚¹
+  double ave_koku;//å›½èªã®å¹³å‡ç‚¹
+  double ave_suu;//æ•°å­¦
+  double ave_ei;//è‹±èª
+  double ave_all;//å…¨ä½“ã®å¹³å‡ç‚¹
+  //case4ä»¥é™
+  int max_koku;//å›½èªã®æœ€é«˜ç‚¹
+  int max_suu;//æ•°å­¦ã®æœ€é«˜ç‚¹
+  int max_ei;//è‹±èªã®æœ€é«˜ç‚¹
+  int max_all;//ç·åˆã®æœ€é«˜ç‚¹
+  int stu1_all[4];//ç”Ÿå¾’1äººã®åˆè¨ˆç‚¹
+  //case5ä»¥é™
+  int j;//iã‚ˆã‚Šã‚‚ä¸€ã¤å¾Œã®æ•°å€¤ã‚’è¡¨ã™å¤‰æ•°
+  student temp;//æ§‹é€ ä½“ã‚’ä¸€æ™‚çš„ã«é€ƒãŒã™å¤‰æ•°
+  //case6ä»¥é™
+  char select_in_case6[256];//case6ã®ä¸­ã®é¸æŠè‚¢
 
-	FILE *fp;//ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^éŒ¾
+	FILE *fp;//ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿å®£è¨€
 
-    ///‘I‘ğˆ‚ğ•\¦‚·‚éˆ—
+    ///é¸æŠè‚¢ã‚’è¡¨ç¤ºã™ã‚‹å‡¦ç†
     select[0] = '1';
-    while(1){//–³ŒÀƒ‹[ƒv
-      if(select[0] == '1' || select[0] == '2' || select[0] == '3' || select[0] == '4' || select[0] == '5' || select[0] == '6'|| select[0] == '7'){//“ü—Í‚ª1-7‚Ì‚Ç‚ê‚©‚Ìê‡
-        printf("\n\nŸ7‚Â‚Ì‚¤‚¿•\¦‚µ‚½‚¢•û–@‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B\n 1:‘S‚Ä•\¦\n 2:ID‚ğw’è‚µ‚Ä•\¦\n 3:•½‹Ï“_‚ğ•\¦\n 4:Še‰È–ÚÅ‚“_‚Ì¶“k•\¦\n 5:Å‚‡Œv“_‚Ì¶“k•\¦\n 6:“_”‡‚É•À‚×‚Ä•\¦\n 7:Šw¶‹L”Ô†‡‚É•\¦\n 8:‚»‚êˆÈŠO‚Ì“ü—Í‚ÅI—¹\n");
-        fgets(select, sizeof(select), stdin);//select‚É’l‚ğŠi”[
-        fp = fopen("studata.txt","r");//ƒ|ƒCƒ“ƒ^•Ï”@ŠJ‚­@ƒtƒ@ƒCƒ‹–¼@ƒ‚[ƒh
+    while(1){//ç„¡é™ãƒ«ãƒ¼ãƒ—
+      if(select[0] == '1' || select[0] == '2' || select[0] == '3' || select[0] == '4' || select[0] == '5' || select[0] == '6'|| select[0] == '7'){//å…¥åŠ›ãŒ1-7ã®ã©ã‚Œã‹ã®å ´åˆ
+        printf("\n\nâ—†7ã¤ã®ã†ã¡è¡¨ç¤ºã—ãŸã„æ–¹æ³•ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚\n 1:å…¨ã¦è¡¨ç¤º\n 2:IDã‚’æŒ‡å®šã—ã¦è¡¨ç¤º\n 3:å¹³å‡ç‚¹ã‚’è¡¨ç¤º\n 4:å„ç§‘ç›®æœ€é«˜ç‚¹ã®ç”Ÿå¾’è¡¨ç¤º\n 5:æœ€é«˜åˆè¨ˆç‚¹ã®ç”Ÿå¾’è¡¨ç¤º\n 6:ç‚¹æ•°é †ã«ä¸¦ã¹ã¦è¡¨ç¤º\n 7:å­¦ç”Ÿè¨˜ç•ªå·é †ã«è¡¨ç¤º\n 8:ãã‚Œä»¥å¤–ã®å…¥åŠ›ã§çµ‚äº†\n");
+        fgets(select, sizeof(select), stdin);//selectã«å€¤ã‚’æ ¼ç´
+        fp = fopen("studata.txt","r");//ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°ã€€é–‹ãã€€ãƒ•ã‚¡ã‚¤ãƒ«åã€€ãƒ¢ãƒ¼ãƒ‰
 
-      	switch(select[0])//‘I‘ğˆ‚ªc//“ü—Í‚Ìˆê•¶š–Ú‚ª
+      	switch(select[0])//é¸æŠè‚¢ãŒâ€¦//å…¥åŠ›ã®ä¸€æ–‡å­—ç›®ãŒ
       	{
-      		case '1':{///1:‘S‚Ä•\¦
+      		case '1':{///1:å…¨ã¦è¡¨ç¤º
 
       			while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name, &data.koku, &data.suu, &data.ei)!= EOF){
-      			student_print(data);//ƒ^ƒOstudentprint•Ï”–¼data ŒÄ‚Ño‚µ*/
+      			student_print(data);//ã‚¿ã‚°studentprintå¤‰æ•°ådata å‘¼ã³å‡ºã—*/
       			}
-      			break;}//case1I—¹
+      			break;}//case1çµ‚äº†
 
-      		case '2':{///2:ID‚ğw’è‚µ‚Ä•\¦
-            printf("ŠwĞ”Ô†‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+      		case '2':{///2:IDã‚’æŒ‡å®šã—ã¦è¡¨ç¤º
+            printf("å­¦ç±ç•ªå·ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
             fgets(inp_id_l, sizeof(inp_id_l), stdin);
             inp_id = atoi(inp_id_l);
 
       			while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name, &data.koku, &data.suu, &data.ei) != EOF){
       				if(inp_id == data.id){
-      					student_print(data);//ƒ^ƒOstudentprint•Ï”–¼data ŒÄ‚Ño‚µ*/
+      					student_print(data);//ã‚¿ã‚°studentprintå¤‰æ•°ådata å‘¼ã³å‡ºã—*/
               }//if
       				else{
                 data.id = data.id + 1;
@@ -81,19 +83,19 @@ int main(void)
             }//while
 
             break;
-          }//case2I—¹
+          }//case2çµ‚äº†
 
-      		 case '3':{///3:•½‹Ï“_‚ğ•\¦
-             ///stu_sum‚Å¶“k‘”‚ğ”‚¦‚éˆ—/////////////////////////////////
+      		 case '3':{///3:å¹³å‡ç‚¹ã‚’è¡¨ç¤º
+             ///stu_sumã§ç”Ÿå¾’ç·æ•°ã‚’æ•°ãˆã‚‹å‡¦ç†/////////////////////////////////
              stu_sum = 0;
 
              while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name, &data.koku, &data.suu, &data.ei)!= EOF){
            	   stu_sum = stu_sum + 1;
            	}
-             fclose(fp);//ˆê“x•Â‚¶‚é
+             fclose(fp);//ä¸€åº¦é–‰ã˜ã‚‹
 
-             ///•À‚×‘Ö‚¦‚Ìˆ—/////////////////////////////////
-             fp = fopen("studata.txt","r");//ƒ|ƒCƒ“ƒ^•Ï”@ŠJ‚­@ƒtƒ@ƒCƒ‹–¼@ƒ‚[ƒh
+             ///ä¸¦ã¹æ›¿ãˆã®å‡¦ç†/////////////////////////////////
+             fp = fopen("studata.txt","r");//ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°ã€€é–‹ãã€€ãƒ•ã‚¡ã‚¤ãƒ«åã€€ãƒ¢ãƒ¼ãƒ‰
              sum_koku  = 0;
              sum_suu   = 0;
              sum_ei    = 0;
@@ -109,26 +111,26 @@ int main(void)
              ave_suu  = sum_suu / stu_sum;
              ave_ei   = sum_ei / stu_sum;
              ave_all  = (ave_koku + ave_suu + ave_ei)/ 3;
-             printf( "‘Œê•½‹Ï:%4.1f\n"  , ave_koku);
-             printf( "”Šw•½‹Ï:%4.1f\n"  , ave_suu);
-             printf( "‰pŒê•½‹Ï:%4.1f\n"  , ave_ei);
-             printf( "‘S‰È–Ú•½‹Ï:%4.1f\n", ave_all);
+             printf( "å›½èªå¹³å‡:%4.1f\n"  , ave_koku);
+             printf( "æ•°å­¦å¹³å‡:%4.1f\n"  , ave_suu);
+             printf( "è‹±èªå¹³å‡:%4.1f\n"  , ave_ei);
+             printf( "å…¨ç§‘ç›®å¹³å‡:%4.1f\n", ave_all);
 
              break;
-           }//case3I—¹
+           }//case3çµ‚äº†
 
-           case '4':{///4:Še‰È–ÚÅ‚“_‚Ì¶“k•\¦
-             ///stu_sum‚Å¶“k‘”‚ğ”‚¦‚éˆ—/////////////////////////////////
+           case '4':{///4:å„ç§‘ç›®æœ€é«˜ç‚¹ã®ç”Ÿå¾’è¡¨ç¤º
+             ///stu_sumã§ç”Ÿå¾’ç·æ•°ã‚’æ•°ãˆã‚‹å‡¦ç†/////////////////////////////////
              stu_sum = 0;
 
              while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name, &data.koku, &data.suu, &data.ei)!= EOF){
                stu_sum = stu_sum + 1;
             }
-             fclose(fp);//ˆê“x•Â‚¶‚é
+             fclose(fp);//ä¸€åº¦é–‰ã˜ã‚‹
 
-             ///•À‚×‘Ö‚¦‚Ìˆ—
-             fp = fopen("studata.txt","r");//ƒ|ƒCƒ“ƒ^•Ï”@ŠJ‚­@ƒtƒ@ƒCƒ‹–¼@ƒ‚[ƒh
-               //‘Œê/////////////////////////////////
+             ///ä¸¦ã¹æ›¿ãˆã®å‡¦ç†
+             fp = fopen("studata.txt","r");//ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°ã€€é–‹ãã€€ãƒ•ã‚¡ã‚¤ãƒ«åã€€ãƒ¢ãƒ¼ãƒ‰
+               //å›½èª/////////////////////////////////
                max_koku = 0;
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
@@ -136,9 +138,9 @@ int main(void)
                     max_koku = data2[i].koku;
                 }
                 else{}//max_koku = max_koku
-               }//Å‘å’l‚ª•ª‚©‚é
-               printf( "\nŸ‘ŒêÅ‚“_%d“_\n", max_koku);
-               //Å‚“_‚Æ”äŠr
+               }//æœ€å¤§å€¤ãŒåˆ†ã‹ã‚‹
+               printf( "\nâ—†å›½èªæœ€é«˜ç‚¹%dç‚¹\n", max_koku);
+               //æœ€é«˜ç‚¹ã¨æ¯”è¼ƒ
 
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
@@ -148,7 +150,7 @@ int main(void)
                 else{}
                }
 
-               //”Šw/////////////////////////////////
+               //æ•°å­¦/////////////////////////////////
                max_suu = 0;
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
@@ -156,9 +158,9 @@ int main(void)
                     max_suu = data2[i].suu;
                 }
                 else{}//max_koku = max_koku
-               }//Å‘å’l‚ª•ª‚©‚é
-               printf( "\nŸ”ŠwÅ‚“_%d“_\n", max_suu);
-               //Å‚“_‚Æ”äŠrˆ—/////////////////////////////////
+               }//æœ€å¤§å€¤ãŒåˆ†ã‹ã‚‹
+               printf( "\nâ—†æ•°å­¦æœ€é«˜ç‚¹%dç‚¹\n", max_suu);
+               //æœ€é«˜ç‚¹ã¨æ¯”è¼ƒå‡¦ç†/////////////////////////////////
 
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
@@ -167,7 +169,7 @@ int main(void)
                 }
                 else{}
                }
-               //‰pŒê/////////////////////////////////
+               //è‹±èª/////////////////////////////////
                max_ei = 0;
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
@@ -175,9 +177,9 @@ int main(void)
                     max_ei = data2[i].ei;
                 }
                 else{}//max_ei = max_ei
-               }//Å‘å’l‚ª•ª‚©‚é
-               printf( "\nŸ‰pŒêÅ‚“_%d“_\n", max_ei);
-               //Å‚“_‚Æ”äŠrˆ—/////////////////////////////////
+               }//æœ€å¤§å€¤ãŒåˆ†ã‹ã‚‹
+               printf( "\nâ—†è‹±èªæœ€é«˜ç‚¹%dç‚¹\n", max_ei);
+               //æœ€é«˜ç‚¹ã¨æ¯”è¼ƒå‡¦ç†/////////////////////////////////
 
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
@@ -188,19 +190,19 @@ int main(void)
                }
                //////////////////////////////////////////////////////////////////
              break;
-           }//case4I—¹
+           }//case4çµ‚äº†
 
-           case '5':{///5:Å‚‡Œv“_‚Ì¶“k•\¦
-             ///stu_sum‚Å¶“k‘”‚ğ”‚¦‚éˆ—/////////////////////////////////
+           case '5':{///5:æœ€é«˜åˆè¨ˆç‚¹ã®ç”Ÿå¾’è¡¨ç¤º
+             ///stu_sumã§ç”Ÿå¾’ç·æ•°ã‚’æ•°ãˆã‚‹å‡¦ç†/////////////////////////////////
              stu_sum = 0;
 
              while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name, &data.koku, &data.suu, &data.ei)!= EOF){
            	   stu_sum = stu_sum + 1;
            	}
-             fclose(fp);//ˆê“x•Â‚¶‚é
+             fclose(fp);//ä¸€åº¦é–‰ã˜ã‚‹
 
-             ///•À‚×‘Ö‚¦‚Ìˆ—/////////////////////////////////
-             fp = fopen("studata.txt","r");//ƒ|ƒCƒ“ƒ^•Ï”@ŠJ‚­@ƒtƒ@ƒCƒ‹–¼@ƒ‚[ƒh
+             ///ä¸¦ã¹æ›¿ãˆã®å‡¦ç†/////////////////////////////////
+             fp = fopen("studata.txt","r");//ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°ã€€é–‹ãã€€ãƒ•ã‚¡ã‚¤ãƒ«åã€€ãƒ¢ãƒ¼ãƒ‰
                max_all = 0;
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
@@ -210,11 +212,11 @@ int main(void)
                     max_all = stu1_all[i];
                 }
                 else{}//max_koku = max_koku
-               }//Å‘å’l‚ª•ª‚©‚é
+               }//æœ€å¤§å€¤ãŒåˆ†ã‹ã‚‹
 
-               //‘‡Å‚“¾“_‚Æ”äŠrˆ—/////////////////////////////////
-               printf( "\nŸ‘‡Å‚“_%d“_\n", max_all);
-               //Å‚“_‚Æ”äŠrˆ—/////////////////////////////////
+               //ç·åˆæœ€é«˜å¾—ç‚¹ã¨æ¯”è¼ƒå‡¦ç†/////////////////////////////////
+               printf( "\nâ—†ç·åˆæœ€é«˜ç‚¹%dç‚¹\n", max_all);
+               //æœ€é«˜ç‚¹ã¨æ¯”è¼ƒå‡¦ç†/////////////////////////////////
                for(i = 0; i < stu_sum; ++i){
                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
                 stu1_all[i] = data2[i].koku + data2[i].suu + data2[i].ei;
@@ -225,187 +227,187 @@ int main(void)
                }
 
              break;
-           }//case5I—¹
+           }//case5çµ‚äº†
 
-           case '6':{///6:“_”‡‚É•À‚×‚Ä•\¦
-             ///stu_sum‚Å¶“k‘”‚ğ”‚¦‚éˆ—/////////////////////////////////
+           case '6':{///6:ç‚¹æ•°é †ã«ä¸¦ã¹ã¦è¡¨ç¤º
+             ///stu_sumã§ç”Ÿå¾’ç·æ•°ã‚’æ•°ãˆã‚‹å‡¦ç†/////////////////////////////////
              stu_sum = 0;
 
              while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name, &data.koku, &data.suu, &data.ei)!= EOF){
                 stu_sum = stu_sum + 1;
              }
-               fclose(fp);//ˆê“x•Â‚¶‚é
+               fclose(fp);//ä¸€åº¦é–‰ã˜ã‚‹
 
-             ///•À‚×‘Ö‚¦‚Ìˆ—/////////////////////////////////
+             ///ä¸¦ã¹æ›¿ãˆã®å‡¦ç†/////////////////////////////////
              select_in_case6[0] = '1';
-             while(1){//–³ŒÀƒ‹[ƒv
-               if(select_in_case6[0] == '1' || select_in_case6[0] == '2' || select_in_case6[0] == '3' || select_in_case6[0] == '4'){//“ü—Í‚ª1-7‚Ì‚Ç‚ê‚©‚Ìê‡
-                 fp = fopen("studata.txt","r");//ƒ|ƒCƒ“ƒ^•Ï”@ŠJ‚­@ƒtƒ@ƒCƒ‹–¼@ƒ‚[ƒh
-                 printf("\n\nŸ4‚Â‚Ì‚¤‚¿•\¦‚µ‚½‚¢•û–@‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B\n 1:‘Œê‚Ì“_”‡\n 2:”Šw‚Ì“_”‡\n 3:‰pŒê‚Ì“_”‡\n 4:‘‡‚Ì“_”‡\n 5:‚»‚êˆÈŠO‚Ì“ü—Í‚ÅÅ‰‚É–ß‚é\n");
-                 fgets(select_in_case6, sizeof(select_in_case6), stdin);//select‚É’l‚ğŠi”[1-4
+             while(1){//ç„¡é™ãƒ«ãƒ¼ãƒ—
+               if(select_in_case6[0] == '1' || select_in_case6[0] == '2' || select_in_case6[0] == '3' || select_in_case6[0] == '4'){//å…¥åŠ›ãŒ1-7ã®ã©ã‚Œã‹ã®å ´åˆ
+                 fp = fopen("studata.txt","r");//ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°ã€€é–‹ãã€€ãƒ•ã‚¡ã‚¤ãƒ«åã€€ãƒ¢ãƒ¼ãƒ‰
+                 printf("\n\nâ—†4ã¤ã®ã†ã¡è¡¨ç¤ºã—ãŸã„æ–¹æ³•ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚\n 1:å›½èªã®ç‚¹æ•°é †\n 2:æ•°å­¦ã®ç‚¹æ•°é †\n 3:è‹±èªã®ç‚¹æ•°é †\n 4:ç·åˆã®ç‚¹æ•°é †\n 5:ãã‚Œä»¥å¤–ã®å…¥åŠ›ã§æœ€åˆã«æˆ»ã‚‹\n");
+                 fgets(select_in_case6, sizeof(select_in_case6), stdin);//selectã«å€¤ã‚’æ ¼ç´1-4
 
-                 switch(select_in_case6[0])//‘I‘ğˆ‚ªc
+                 switch(select_in_case6[0])//é¸æŠè‚¢ãŒâ€¦
                  {
-                   //‘Œê‡‚Ìƒ\[ƒg/////////////////////////////////
+                   //å›½èªé †ã®ã‚½ãƒ¼ãƒˆ/////////////////////////////////
                    case '1':{
-                     for(i = 0; i < stu_sum; ++i){//¶“k‚Ì”‚ğƒJƒEƒ“ƒg‚·‚éi
+                     for(i = 0; i < stu_sum; ++i){//ç”Ÿå¾’ã®æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹i
                        fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
-                       for(j = i + 1; j < stu_sum; ++j){//“ü‚ê‘Ö‚¦‚é‰ñ”j
+                       for(j = i + 1; j < stu_sum; ++j){//å…¥ã‚Œæ›¿ãˆã‚‹å›æ•°j
                          fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name, &data2[j].koku, &data2[j].suu, &data2[j].ei);
-                         if(data2[i].koku  < data2[j].koku){//j‚Â‚Ü‚èŒã‚ë‚Ì‚Ù‚¤‚ª‘å‚«‚¢ê‡+“¯‚¶ê‡
-                           temp       = data2[i];//temp‚É¬‚ğ
-                           data2[i]   = data2[j];//i‚É‘å‚ğ‘ã“ü
-                           data2[j]   = temp;//j‚É¬‚ğ‘ã“ü
-                           }//“ü‚ê‘Ö‚¦I—¹
-                           else{}//“ü‚ê‘Ö‚¦‚È‚¢if(data2[i].koku  >= data2[j].koku)
+                         if(data2[i].koku  < data2[j].koku){//jã¤ã¾ã‚Šå¾Œã‚ã®ã»ã†ãŒå¤§ãã„å ´åˆ+åŒã˜å ´åˆ
+                           temp       = data2[i];//tempã«å°ã‚’
+                           data2[i]   = data2[j];//iã«å¤§ã‚’ä»£å…¥
+                           data2[j]   = temp;//jã«å°ã‚’ä»£å…¥
+                           }//å…¥ã‚Œæ›¿ãˆçµ‚äº†
+                           else{}//å…¥ã‚Œæ›¿ãˆãªã„if(data2[i].koku  >= data2[j].koku)
 
-                         }//for jŒJ‚è•Ô‚µjI—¹
-                     }//for iŒJ‚è•Ô‚µiI—¹
+                         }//for jç¹°ã‚Šè¿”ã—jçµ‚äº†
+                     }//for iç¹°ã‚Šè¿”ã—içµ‚äº†
 
-                     for(i = 0; i < stu_sum; ++i){//‚à‚¤ˆê“xi‚ğ‚O‚©‚ç”‚¦‚é
-                       student_print(data2[i]);//data2‚Ìê‡‚Ìƒ^ƒOstudentprint•Ï”–¼data ŒÄ‚Ño‚µ
-                     }//ŒJ‚è•Ô‚µiI—¹
+                     for(i = 0; i < stu_sum; ++i){//ã‚‚ã†ä¸€åº¦iã‚’ï¼ã‹ã‚‰æ•°ãˆã‚‹
+                       student_print(data2[i]);//data2ã®å ´åˆã®ã‚¿ã‚°studentprintå¤‰æ•°ådata å‘¼ã³å‡ºã—
+                     }//ç¹°ã‚Šè¿”ã—içµ‚äº†
 
                      break;
-                   }//case 6-1I—¹
+                   }//case 6-1çµ‚äº†
 
-                   //”Šw‡‚Ìƒ\[ƒg/////////////////////////////////
+                   //æ•°å­¦é †ã®ã‚½ãƒ¼ãƒˆ/////////////////////////////////
                    case '2':{
-                     for(i = 0; i < stu_sum; ++i){//¶“k‚Ì”‚ğƒJƒEƒ“ƒg‚·‚éi
+                     for(i = 0; i < stu_sum; ++i){//ç”Ÿå¾’ã®æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹i
                        fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
-                       for(j = i + 1; j < stu_sum; ++j){//“ü‚ê‘Ö‚¦‚é‰ñ”j
+                       for(j = i + 1; j < stu_sum; ++j){//å…¥ã‚Œæ›¿ãˆã‚‹å›æ•°j
                          fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name, &data2[j].koku, &data2[j].suu, &data2[j].ei);
-                         if(data2[i].suu  < data2[j].suu){//j‚Â‚Ü‚èŒã‚ë‚Ì‚Ù‚¤‚ª‘å‚«‚¢ê‡+“¯‚¶ê‡
-                           temp       = data2[i];//temp‚É¬‚ğ
-                           data2[i]   = data2[j];//i‚É‘å‚ğ‘ã“ü
-                           data2[j]   = temp;//j‚É¬‚ğ‘ã“ü
-                           }//“ü‚ê‘Ö‚¦I—¹
-                           else{}//“ü‚ê‘Ö‚¦‚È‚¢
+                         if(data2[i].suu  < data2[j].suu){//jã¤ã¾ã‚Šå¾Œã‚ã®ã»ã†ãŒå¤§ãã„å ´åˆ+åŒã˜å ´åˆ
+                           temp       = data2[i];//tempã«å°ã‚’
+                           data2[i]   = data2[j];//iã«å¤§ã‚’ä»£å…¥
+                           data2[j]   = temp;//jã«å°ã‚’ä»£å…¥
+                           }//å…¥ã‚Œæ›¿ãˆçµ‚äº†
+                           else{}//å…¥ã‚Œæ›¿ãˆãªã„
 
-                         }//for jŒJ‚è•Ô‚µjI—¹
-                     }//for iŒJ‚è•Ô‚µiI—¹
+                         }//for jç¹°ã‚Šè¿”ã—jçµ‚äº†
+                     }//for iç¹°ã‚Šè¿”ã—içµ‚äº†
 
-                     for(i = 0; i < stu_sum; ++i){//‚à‚¤ˆê“xi‚ğ‚O‚©‚ç”‚¦‚é
-                       student_print(data2[i]);//data2‚Ìê‡‚Ìƒ^ƒOstudentprint•Ï”–¼data ŒÄ‚Ño‚µ
-                     }//ŒJ‚è•Ô‚µiI—¹
+                     for(i = 0; i < stu_sum; ++i){//ã‚‚ã†ä¸€åº¦iã‚’ï¼ã‹ã‚‰æ•°ãˆã‚‹
+                       student_print(data2[i]);//data2ã®å ´åˆã®ã‚¿ã‚°studentprintå¤‰æ•°ådata å‘¼ã³å‡ºã—
+                     }//ç¹°ã‚Šè¿”ã—içµ‚äº†
 
                      break;
-                   }//case 6-2I—¹
+                   }//case 6-2çµ‚äº†
 
-                   //‰pŒê‡‚Ìƒ\[ƒg/////////////////////////////////
+                   //è‹±èªé †ã®ã‚½ãƒ¼ãƒˆ/////////////////////////////////
                    case '3':{
-                     for(i = 0; i < stu_sum; ++i){//¶“k‚Ì”‚ğƒJƒEƒ“ƒg‚·‚éi
+                     for(i = 0; i < stu_sum; ++i){//ç”Ÿå¾’ã®æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹i
                        fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
-                       for(j = i + 1; j < stu_sum; ++j){//“ü‚ê‘Ö‚¦‚é‰ñ”j
+                       for(j = i + 1; j < stu_sum; ++j){//å…¥ã‚Œæ›¿ãˆã‚‹å›æ•°j
                          fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name, &data2[j].koku, &data2[j].suu, &data2[j].ei);
-                         if(data2[i].ei  < data2[j].ei){//j‚Â‚Ü‚èŒã‚ë‚Ì‚Ù‚¤‚ª‘å‚«‚¢ê‡+“¯‚¶ê‡
-                           temp       = data2[i];//temp‚É¬‚ğ
-                           data2[i]   = data2[j];//i‚É‘å‚ğ‘ã“ü
-                           data2[j]   = temp;//j‚É¬‚ğ‘ã“ü
-                           }//“ü‚ê‘Ö‚¦I—¹
-                           else{}//“ü‚ê‘Ö‚¦‚È‚¢
+                         if(data2[i].ei  < data2[j].ei){//jã¤ã¾ã‚Šå¾Œã‚ã®ã»ã†ãŒå¤§ãã„å ´åˆ+åŒã˜å ´åˆ
+                           temp       = data2[i];//tempã«å°ã‚’
+                           data2[i]   = data2[j];//iã«å¤§ã‚’ä»£å…¥
+                           data2[j]   = temp;//jã«å°ã‚’ä»£å…¥
+                           }//å…¥ã‚Œæ›¿ãˆçµ‚äº†
+                           else{}//å…¥ã‚Œæ›¿ãˆãªã„
 
-                         }//for jŒJ‚è•Ô‚µjI—¹
-                     }//for iŒJ‚è•Ô‚µiI—¹
+                         }//for jç¹°ã‚Šè¿”ã—jçµ‚äº†
+                     }//for iç¹°ã‚Šè¿”ã—içµ‚äº†
 
-                     for(i = 0; i < stu_sum; ++i){//‚à‚¤ˆê“xi‚ğ‚O‚©‚ç”‚¦‚é
-                       student_print(data2[i]);//data2‚Ìê‡‚Ìƒ^ƒOstudentprint•Ï”–¼data ŒÄ‚Ño‚µ
-                     }//ŒJ‚è•Ô‚µiI—¹
+                     for(i = 0; i < stu_sum; ++i){//ã‚‚ã†ä¸€åº¦iã‚’ï¼ã‹ã‚‰æ•°ãˆã‚‹
+                       student_print(data2[i]);//data2ã®å ´åˆã®ã‚¿ã‚°studentprintå¤‰æ•°ådata å‘¼ã³å‡ºã—
+                     }//ç¹°ã‚Šè¿”ã—içµ‚äº†
 
                      break;
-                   }//case 6-3I—¹
+                   }//case 6-3çµ‚äº†
 
-                   //‘‡‡‚Ìƒ\[ƒg/////////////////////////////////
+                   //ç·åˆé †ã®ã‚½ãƒ¼ãƒˆ/////////////////////////////////
                    case '4':{
-                     for(i = 0; i < stu_sum; ++i){//¶“k‚Ì”‚ğƒJƒEƒ“ƒg‚·‚éi
+                     for(i = 0; i < stu_sum; ++i){//ç”Ÿå¾’ã®æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹i
                        fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
-                       for(j = i + 1; j < stu_sum; ++j){//“ü‚ê‘Ö‚¦‚é‰ñ”j
+                       for(j = i + 1; j < stu_sum; ++j){//å…¥ã‚Œæ›¿ãˆã‚‹å›æ•°j
                          fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name, &data2[j].koku, &data2[j].suu, &data2[j].ei);
-                         stu1_all[i] = data2[i].koku + data2[i].suu + data2[i].ei;//‡Œv“_
-                         stu1_all[j] = data2[j].koku + data2[j].suu + data2[j].ei;//Ÿ‚Ìl‚Ì‡Œv“_
+                         stu1_all[i] = data2[i].koku + data2[i].suu + data2[i].ei;//åˆè¨ˆç‚¹
+                         stu1_all[j] = data2[j].koku + data2[j].suu + data2[j].ei;//æ¬¡ã®äººã®åˆè¨ˆç‚¹
 
-                         if(stu1_all[i]  < stu1_all[j]){//j‚Â‚Ü‚èŒã‚ë‚Ì‚Ù‚¤‚ª‘å‚«‚¢ê‡+“¯‚¶ê‡
-                           temp       = data2[i];//temp‚É¬‚ğ
-                           data2[i]   = data2[j];//i‚É‘å‚ğ‘ã“ü
-                           data2[j]   = temp;//j‚É¬‚ğ‘ã“ü
-                         }//“ü‚ê‘Ö‚¦I—¹
-                         else{}//“ü‚ê‘Ö‚¦‚È‚¢
-                       }//ŒJ‚è•Ô‚µjI—¹
-                     }//ŒJ‚è•Ô‚µiI—¹
+                         if(stu1_all[i]  < stu1_all[j]){//jã¤ã¾ã‚Šå¾Œã‚ã®ã»ã†ãŒå¤§ãã„å ´åˆ+åŒã˜å ´åˆ
+                           temp       = data2[i];//tempã«å°ã‚’
+                           data2[i]   = data2[j];//iã«å¤§ã‚’ä»£å…¥
+                           data2[j]   = temp;//jã«å°ã‚’ä»£å…¥
+                         }//å…¥ã‚Œæ›¿ãˆçµ‚äº†
+                         else{}//å…¥ã‚Œæ›¿ãˆãªã„
+                       }//ç¹°ã‚Šè¿”ã—jçµ‚äº†
+                     }//ç¹°ã‚Šè¿”ã—içµ‚äº†
 
-                     for(i = 0; i < stu_sum; ++i){//‚à‚¤ˆê“xi‚ğ‚O‚©‚ç”‚¦‚é
-                       student_print(data2[i]);//data2‚Ìê‡‚Ìƒ^ƒOstudentprint•Ï”–¼data ŒÄ‚Ño‚µ
-                     }//ŒJ‚è•Ô‚µiI—¹
+                     for(i = 0; i < stu_sum; ++i){//ã‚‚ã†ä¸€åº¦iã‚’ï¼ã‹ã‚‰æ•°ãˆã‚‹
+                       student_print(data2[i]);//data2ã®å ´åˆã®ã‚¿ã‚°studentprintå¤‰æ•°ådata å‘¼ã³å‡ºã—
+                     }//ç¹°ã‚Šè¿”ã—içµ‚äº†
 
-                    break;}//case 6-4I—¹
+                    break;}//case 6-4çµ‚äº†
 
-                  }//switch(select_in_case6)I—¹
+                  }//switch(select_in_case6)çµ‚äº†
 
-                }//if•¶I‚í‚è
+                }//ifæ–‡çµ‚ã‚ã‚Š
 
                 else{
                   break;
                 }
 
-                fclose(fp);//ˆê“x•Â‚¶‚é
-            }//whileI—¹
+                fclose(fp);//ä¸€åº¦é–‰ã˜ã‚‹
+            }//whileçµ‚äº†
 
-           }//case6I—¹
+           }//case6çµ‚äº†
 
-           case '7':{///7:Šw¶‹L”Ô†‡‚É•\¦
-             ///stu_sum‚Å¶“k‘”‚ğ”‚¦‚éˆ—/////////////////////////////////
+           case '7':{///7:å­¦ç”Ÿè¨˜ç•ªå·é †ã«è¡¨ç¤º
+             ///stu_sumã§ç”Ÿå¾’ç·æ•°ã‚’æ•°ãˆã‚‹å‡¦ç†/////////////////////////////////
              stu_sum = 0;
 
              while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name, &data.koku, &data.suu, &data.ei)!= EOF){
            	   stu_sum = stu_sum + 1;
            	}
-             fclose(fp);//ˆê“x•Â‚¶‚é
+             fclose(fp);//ä¸€åº¦é–‰ã˜ã‚‹
 
-             ///•À‚×‘Ö‚¦‚Ìˆ—/////////////////////////////////
-             fp = fopen("studata.txt","r");//ƒ|ƒCƒ“ƒ^•Ï”@ŠJ‚­@ƒtƒ@ƒCƒ‹–¼@ƒ‚[ƒh
-               for(i = 0; i < stu_sum; ++i){//¶“k‚Ì”‚ğƒJƒEƒ“ƒg‚·‚éi
+             ///ä¸¦ã¹æ›¿ãˆã®å‡¦ç†/////////////////////////////////
+             fp = fopen("studata.txt","r");//ãƒã‚¤ãƒ³ã‚¿å¤‰æ•°ã€€é–‹ãã€€ãƒ•ã‚¡ã‚¤ãƒ«åã€€ãƒ¢ãƒ¼ãƒ‰
+               for(i = 0; i < stu_sum; ++i){//ç”Ÿå¾’ã®æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹i
                  fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name, &data2[i].koku, &data2[i].suu, &data2[i].ei);
-                 for(j = i + 1; j < stu_sum; ++j){//“ü‚ê‘Ö‚¦‚é‰ñ”j////©¶“k”•ªŒğŠ·‚µ‚È‚¢‚Æ‚¨‚©‚µ‚­‚È‚éB
+                 for(j = i + 1; j < stu_sum; ++j){//å…¥ã‚Œæ›¿ãˆã‚‹å›æ•°j////â†ç”Ÿå¾’æ•°åˆ†äº¤æ›ã—ãªã„ã¨ãŠã‹ã—ããªã‚‹ã€‚
                    fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name, &data2[j].koku, &data2[j].suu, &data2[j].ei);
-                     if(data2[i].id  > data2[j].id){//j‚Â‚Ü‚èŒã‚ë‚Ì‚Ù‚¤‚ª¬‚³‚¢ê‡
-                       temp       = data2[i];//temp‚É‘å‚ğ
-                       data2[i]   = data2[j];//i‚É¬‚ğ‘ã“ü
-                       data2[j]   = temp;//j‚É‘å‚ğ‘ã“ü
-                     }//“ü‚ê‘Ö‚¦I—¹(¬¨‘å)
+                     if(data2[i].id  > data2[j].id){//jã¤ã¾ã‚Šå¾Œã‚ã®ã»ã†ãŒå°ã•ã„å ´åˆ
+                       temp       = data2[i];//tempã«å¤§ã‚’
+                       data2[i]   = data2[j];//iã«å°ã‚’ä»£å…¥
+                       data2[j]   = temp;//jã«å¤§ã‚’ä»£å…¥
+                     }//å…¥ã‚Œæ›¿ãˆçµ‚äº†(å°â†’å¤§)
 
-                     else{}//“ü‚ê‘Ö‚¦‚È‚¢
-                 }//ŒJ‚è•Ô‚µjI—¹
-               }//ŒJ‚è•Ô‚µiI—¹
+                     else{}//å…¥ã‚Œæ›¿ãˆãªã„
+                 }//ç¹°ã‚Šè¿”ã—jçµ‚äº†
+               }//ç¹°ã‚Šè¿”ã—içµ‚äº†
 
-               ///‘S¶“kî•ñ•\¦‚·‚éˆ—/////////////////////////////////
-               for(i = 0; i < stu_sum; ++i){//‚à‚¤ˆê“xi‚ğ‚O‚©‚ç”‚¦‚é
-                 student_print(data2[i]);//data2‚Ìê‡‚Ìƒ^ƒOstudentprint•Ï”–¼data ŒÄ‚Ño‚µ
-               }//ŒJ‚è•Ô‚µiI—¹
+               ///å…¨ç”Ÿå¾’æƒ…å ±è¡¨ç¤ºã™ã‚‹å‡¦ç†/////////////////////////////////
+               for(i = 0; i < stu_sum; ++i){//ã‚‚ã†ä¸€åº¦iã‚’ï¼ã‹ã‚‰æ•°ãˆã‚‹
+                 student_print(data2[i]);//data2ã®å ´åˆã®ã‚¿ã‚°studentprintå¤‰æ•°ådata å‘¼ã³å‡ºã—
+               }//ç¹°ã‚Šè¿”ã—içµ‚äº†
                break;
-           }//case7I—¹
+           }//case7çµ‚äº†
 
-           defalut:{///1-7ˆÈŠO‚Ì“ü—Í
-       			break;}//defalutI—¹
+           defalut:{///1-7ä»¥å¤–ã®å…¥åŠ›
+       			break;}//defalutçµ‚äº†
 
-         }//switch‘I‘ğˆI—¹
-            fclose(fp);//‰ü‚ß‚Ä•Â‚¶‚é
-           }///if•¶
+         }//switché¸æŠè‚¢çµ‚äº†
+            fclose(fp);//æ”¹ã‚ã¦é–‰ã˜ã‚‹
+           }///ifæ–‡
 
            else{
-             break;//–³ŒÀƒ‹[ƒvwhile(1)‚ğ”²‚¯‚é
-           }//else•¶
+             break;//ç„¡é™ãƒ«ãƒ¼ãƒ—while(1)ã‚’æŠœã‘ã‚‹
+           }//elseæ–‡
 
-    }///while•¶‚ÌÅŒã
+    }///whileæ–‡ã®æœ€å¾Œ
     return 0;
-}//ƒƒCƒ“ˆ—I—¹
+}//ãƒ¡ã‚¤ãƒ³å‡¦ç†çµ‚äº†
 
- //ƒf[ƒ^‚ğ•\¦‚·‚éƒ^ƒOstudentprint•Ï”–¼data/////////////////////////////////
+ //ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¤ºã™ã‚‹ã‚¿ã‚°studentprintå¤‰æ•°ådata/////////////////////////////////
  void student_print(student data)
  {
-   printf( "EID:%d", data.id );
-   printf( " –¼‘O:%s", data.name );
-   printf( " ‘Œê:%d", data.koku );
-   printf( " ”Šw:%d", data.suu );
-   printf( " ‰pŒê:%d@\n", data.ei );
+   printf( "ãƒ»ID:%d", data.id );
+   printf( " åå‰:%s", data.name );
+   printf( " å›½èª:%d", data.koku );
+   printf( " æ•°å­¦:%d", data.suu );
+   printf( " è‹±èª:%dã€€\n", data.ei );
    return;
  }
