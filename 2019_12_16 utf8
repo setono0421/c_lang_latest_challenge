@@ -1,0 +1,452 @@
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>//atoi関数を使用するため
+
+//構造体(生徒のデータひな形)
+typedef struct
+{
+    int   id;
+    char  name[50];
+    int   koku;
+    int   suu;
+    int   ei;
+}student; //studentという型
+
+void student_print(student data);//studentprintの(型であるstudent 変数名data)
+
+int main(void)
+///メイン処理
+{
+  student data; //student型の関数data
+  student data2[30];//case3用
+  char select[256];//選択肢
+  //char dummy;/*[Enter]キー用*/
+  //case2以降
+  int inp_id;//入力された学籍番号
+  char inp_id_l[256];//入力された学籍番号を文字から数字に変換するための変数
+  //case3以降
+  int i;//回数カウント用変数
+  int stu_sum;//生徒の合計数
+  int sum_koku;//全員の国語総数点
+  int sum_suu;//数学
+  int sum_ei;//英語
+  int sum_all;//全員の総合総数点
+  double ave_koku;//国語の平均点
+  double ave_suu;//数学
+  double ave_ei;//英語
+  double ave_all;//全体の平均点
+  //case4以降
+  int max_koku;//国語の最高点
+  int max_suu;//数学の最高点
+  int max_ei;//英語の最高点
+  int max_all;//総合の最高点
+  int stu1_all[4];//生徒1人の合計点
+  //case5以降
+  int j;//iよりも一つ後の数値を表す変数
+  student temp;//構造体を一時的に逃がす変数
+  //case6以降
+  char select_in_case6[256];//case6の中の選択肢
+
+	FILE *fp;//ファイルポインタ宣言
+
+    ///選択肢を表示する処理
+    select[0] = '1';
+    while(1){//無限ループ
+      if(select[0] == '1' || select[0] == '2' || select[0] == '3'
+      || select[0] == '4' || select[0] == '5' || select[0] == '6'
+      || select[0] == '7'){//入力が1-7のどれかの場合
+        printf("\n\nselect order\n"
+        " 1:all\n 2 ID specify\n 3:average\n"
+        " 4:best score every subject\n 5:best score sum\n 6:sort best score\n"
+        " 7:sort student number\n 8 finish\n");
+        fgets(select, sizeof(select), stdin);//selectに値を格納
+        fp = fopen("studata.txt","r");//ポインタ変数　開く　ファイル名　モード
+
+      	switch(select[0])//選択肢が…//入力の一文字目が
+      	{
+      		case '1':{///1:全て表示
+
+      			while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name,
+            &data.koku, &data.suu, &data.ei)!= EOF){
+      			student_print(data);//タグstudentprint変数名data 呼び出し*/
+      			}
+      			break;}//case1終了
+
+      		case '2':{///2:IDを指定して表示
+            printf("enter student ID");
+            fgets(inp_id_l, sizeof(inp_id_l), stdin);
+            inp_id = atoi(inp_id_l);
+
+      			while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name,
+            &data.koku, &data.suu, &data.ei) != EOF){
+      				if(inp_id == data.id){
+      					student_print(data);//タグstudentprint変数名data 呼び出し*/
+              }//if
+      				else{
+                data.id = data.id + 1;
+              }//else
+            }//while
+
+            break;
+          }//case2終了
+
+      		 case '3':{///3:平均点を表示
+             ///stu_sumで生徒総数を数える処理/////////////////////////////////
+             stu_sum = 0;
+
+             while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name,
+             &data.koku, &data.suu, &data.ei)!= EOF){
+           	   stu_sum = stu_sum + 1;
+           	}
+             fclose(fp);//一度閉じる
+
+             ///並べ替えの処理/////////////////////////////////
+             fp = fopen("studata.txt","r");//ポインタ変数　開く　ファイル名　モード
+             sum_koku  = 0;
+             sum_suu   = 0;
+             sum_ei    = 0;
+
+             for(i = 0; i < stu_sum; i++){
+               fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+               &data2[i].koku, &data2[i].suu, &data2[i].ei);
+               sum_koku += data2[i].koku;//sum_koku = sum_koku + data[i].koku;
+               sum_suu  += data2[i].suu;
+               sum_ei   += data2[i].ei;
+             }
+
+             ave_koku = sum_koku / stu_sum;
+             ave_suu  = sum_suu / stu_sum;
+             ave_ei   = sum_ei / stu_sum;
+             ave_all  = (ave_koku + ave_suu + ave_ei)/ 3;
+             printf( "japanese:%4.1f\n"  , ave_koku);
+             printf( "mathematics:%4.1f\n"  , ave_suu);
+             printf( "english:%4.1f\n"  , ave_ei);
+             printf( "sum score:%4.1f\n", ave_all);
+
+             break;
+           }//case3終了
+
+           case '4':{///4:各科目最高点の生徒表示
+             ///stu_sumで生徒総数を数える処理/////////////////////////////////
+             stu_sum = 0;
+
+             while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name,
+             &data.koku, &data.suu, &data.ei)!= EOF){
+               stu_sum = stu_sum + 1;
+            }
+             fclose(fp);//一度閉じる
+
+             ///並べ替えの処理
+             fp = fopen("studata.txt","r");//ポインタ変数　開く　ファイル名　モード
+               //国語/////////////////////////////////
+               max_koku = 0;
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                if( max_koku < data2[i].koku ){
+                    max_koku = data2[i].koku;
+                }
+                else{}//max_koku = max_koku
+               }//最大値が分かる
+               printf( "\nbest japanese:%d\n", max_koku);
+               //最高点と比較
+
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                if( max_koku == data2[i].koku ){
+               student_print(data2[i]);
+                }
+                else{}
+               }
+
+               //数学/////////////////////////////////
+               max_suu = 0;
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                if( max_suu < data2[i].suu ){
+                    max_suu = data2[i].suu;
+                }
+                else{}//max_koku = max_koku
+               }//最大値が分かる
+               printf( "\nbest mathematics:%d\n", max_suu);
+               //最高点と比較処理/////////////////////////////////
+
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                if( max_suu == data2[i].suu ){
+               student_print(data2[i]);
+                }
+                else{}
+               }
+               //英語/////////////////////////////////
+               max_ei = 0;
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                if( max_ei < data2[i].ei ){
+                    max_ei = data2[i].ei;
+                }
+                else{}//max_ei = max_ei
+               }//最大値が分かる
+               printf( "\nbest english:%d\n", max_ei);
+               //最高点と比較処理/////////////////////////////////
+
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                if( max_ei == data2[i].ei ){
+               student_print(data2[i]);
+                }
+                else{}
+               }
+               /////////////////////////////////////////////////////////////////
+             break;
+           }//case4終了
+
+           case '5':{///5:最高合計点の生徒表示
+             ///stu_sumで生徒総数を数える処理/////////////////////////////////
+             stu_sum = 0;
+
+             while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name,
+             &data.koku, &data.suu, &data.ei)!= EOF){
+           	   stu_sum = stu_sum + 1;
+           	}
+             fclose(fp);//一度閉じる
+
+             ///並べ替えの処理/////////////////////////////////
+             fp = fopen("studata.txt","r");//ポインタ変数　開く　ファイル名　モード
+               max_all = 0;
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                stu1_all[i] = data2[i].koku + data2[i].suu + data2[i].ei;
+
+                if( max_all < stu1_all[i] ){
+                    max_all = stu1_all[i];
+                }
+                else{}//max_koku = max_koku
+               }//最大値が分かる
+
+               //総合最高得点と比較処理/////////////////////////////////
+               printf( "\n◆best sum score:%d\n", max_all);
+               //最高点と比較処理/////////////////////////////////
+               for(i = 0; i < stu_sum; ++i){
+                fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                stu1_all[i] = data2[i].koku + data2[i].suu + data2[i].ei;
+                if( max_all == stu1_all[i] ){
+                 student_print(data2[i]);
+                }
+                else{}
+               }
+
+             break;
+           }//case5終了
+
+           case '6':{///6:点数順に並べて表示
+             ///stu_sumで生徒総数を数える処理/////////////////////////////////
+             stu_sum = 0;
+
+             while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name,
+             &data.koku, &data.suu, &data.ei)!= EOF){
+                stu_sum = stu_sum + 1;
+             }
+               fclose(fp);//一度閉じる
+
+             ///並べ替えの処理/////////////////////////////////
+             select_in_case6[0] = '1';
+             while(1){//無限ループ
+               if(select_in_case6[0] == '1' || select_in_case6[0] == '2'
+               || select_in_case6[0] == '3' || select_in_case6[0] == '4'){
+                 fp = fopen("studata.txt","r");//ポインタ変数,開く,ファイル名,モード
+                 printf("\n\nselect order\n"
+                  " 1:sort japanese\n 2:sort mathematics\n 3:sort english\n"
+                  " 4:sort sum score\n 5:return to first\n");
+                 fgets(select_in_case6, sizeof(select_in_case6), stdin);
+                 //selectに値を格納1-4
+
+                 switch(select_in_case6[0])//選択肢が…
+                 {
+                   //国語順のソート/////////////////////////////////
+                   case '1':{
+                     for(i = 0; i < stu_sum; ++i){//生徒の数をカウントするi
+                       fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                       &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                       for(j = i + 1; j < stu_sum; ++j){//入れ替える回数j
+                         fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name,
+                         &data2[j].koku, &data2[j].suu, &data2[j].ei);
+                         if(data2[i].koku  < data2[j].koku){//j後ろのほうが大きい場合+同じ場合
+                           temp       = data2[i];//tempに小を
+                           data2[i]   = data2[j];//iに大を代入
+                           data2[j]   = temp;//jに小を代入
+                           }//入れ替え終了
+                         else{}//入れ替えないif(data2[i].koku  >= data2[j].koku)
+
+                         }//for j繰り返しj終了
+                     }//for i繰り返しi終了
+
+                     for(i = 0; i < stu_sum; ++i){//もう一度iを０から数える
+                       student_print(data2[i]);
+                       //data2の場合のタグstudentprint変数名data 呼び出し
+                     }//繰り返しi終了
+
+                     break;
+                   }//case 6-1終了
+
+                   //数学順のソート/////////////////////////////////
+                   case '2':{
+                     for(i = 0; i < stu_sum; ++i){//生徒の数をカウントするi
+                       fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                       &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                       for(j = i + 1; j < stu_sum; ++j){//入れ替える回数j
+                         fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name,
+                         &data2[j].koku, &data2[j].suu, &data2[j].ei);
+                         if(data2[i].suu  < data2[j].suu){//j後ろのほうが大きい場合+同じ場合
+                           temp       = data2[i];//tempに小を
+                           data2[i]   = data2[j];//iに大を代入
+                           data2[j]   = temp;//jに小を代入
+                           }//入れ替え終了
+                         else{}//入れ替えない
+
+                         }//for j繰り返しj終了
+                     }//for i繰り返しi終了
+
+                     for(i = 0; i < stu_sum; ++i){//もう一度iを０から数える
+                       student_print(data2[i]);//タグstudentprint変数名data呼び出し
+                     }//繰り返しi終了
+
+                     break;
+                   }//case 6-2終了
+
+                   //英語順のソート/////////////////////////////////
+                   case '3':{
+                     for(i = 0; i < stu_sum; ++i){//生徒の数をカウントするi
+                       fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                       &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                       for(j = i + 1; j < stu_sum; ++j){//入れ替える回数j
+                         fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name,
+                         &data2[j].koku, &data2[j].suu, &data2[j].ei);
+                         if(data2[i].ei  < data2[j].ei){//j後ろのほうが大きい場合+同じ場合
+                           temp       = data2[i];//tempに小を
+                           data2[i]   = data2[j];//iに大を代入
+                           data2[j]   = temp;//jに小を代入
+                           }//入れ替え終了
+                           else{}//入れ替えない
+
+                         }//for j繰り返しj終了
+                     }//for i繰り返しi終了
+
+                     for(i = 0; i < stu_sum; ++i){//もう一度iを０から数える
+                       student_print(data2[i]);
+                       //data2の場合のタグstudentprint変数名data 呼び出し
+                     }//繰り返しi終了
+
+                     break;
+                   }//case 6-3終了
+
+                   //総合順のソート/////////////////////////////////
+                   case '4':{
+                     for(i = 0; i < stu_sum; ++i){//生徒の数をカウントするi
+                       fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                       &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                       for(j = i + 1; j < stu_sum; ++j){//入れ替える回数j
+                         fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name,
+                         &data2[j].koku, &data2[j].suu, &data2[j].ei);
+                         stu1_all[i] = data2[i].koku + data2[i].suu + data2[i].ei;
+                         //合計点
+                         stu1_all[j] = data2[j].koku + data2[j].suu + data2[j].ei;
+                         //次の人の合計点
+
+                         if(stu1_all[i]  < stu1_all[j]){//j後ろのほうが大きい場合+同じ場合
+                           temp       = data2[i];//tempに小を
+                           data2[i]   = data2[j];//iに大を代入
+                           data2[j]   = temp;//jに小を代入
+                         }//入れ替え終了
+                         else{}//入れ替えない
+                       }//繰り返しj終了
+                     }//繰り返しi終了
+
+                     for(i = 0; i < stu_sum; ++i){//もう一度iを０から数える
+                       student_print(data2[i]);
+                       //data2の場合のタグstudentprint変数名data 呼び出し
+                     }//繰り返しi終了
+
+                    break;}//case 6-4終了
+
+                  }//switch(select_in_case6)終了
+
+                }//if文終わり
+
+                else{
+                  break;
+                }
+
+                fclose(fp);//一度閉じる
+            }//while終了
+
+           }//case6終了
+
+           case '7':{///7:学生記番号順に表示
+             ///stu_sumで生徒総数を数える処理/////////////////////////////////
+             stu_sum = 0;
+
+             while(fscanf(fp, "%d%s%d%d%d", &data.id, data.name,
+             &data.koku, &data.suu, &data.ei)!= EOF){
+           	   stu_sum = stu_sum + 1;
+           	}
+             fclose(fp);//一度閉じる
+
+             ///並べ替えの処理/////////////////////////////////
+             fp = fopen("studata.txt","r");//ポインタ変数　開く　ファイル名　モード
+               for(i = 0; i < stu_sum; ++i){//生徒の数をカウントするi
+                 fscanf(fp, "%d%s%d%d%d", &data2[i].id, data2[i].name,
+                 &data2[i].koku, &data2[i].suu, &data2[i].ei);
+                 for(j = i + 1; j < stu_sum; ++j){//入れ替える回数j
+                   fscanf(fp, "%d%s%d%d%d", &data2[j].id, data2[j].name,
+                   &data2[j].koku, &data2[j].suu, &data2[j].ei);
+                     if(data2[i].id  > data2[j].id){//jつまり後ろのほうが小さい場合
+                       temp       = data2[i];//tempに大を
+                       data2[i]   = data2[j];//iに小を代入
+                       data2[j]   = temp;//jに大を代入
+                     }//入れ替え終了(小→大)
+
+                     else{}//入れ替えない
+                 }//繰り返しj終了
+               }//繰り返しi終了
+
+               ///全生徒情報表示する処理/////////////////////////////////
+               for(i = 0; i < stu_sum; ++i){//もう一度iを０から数える
+                 student_print(data2[i]);//studentprint変数名data 呼び出し
+               }//繰り返しi終了
+               break;
+           }//case7終了
+
+           defalut:{///1-7以外の入力
+       			break;}//defalut終了
+
+         }//switch選択肢終了
+            fclose(fp);//改めて閉じる
+           }///if文
+
+           else{
+             break;//無限ループwhile(1)を抜ける
+           }//else文
+
+    }///while文の最後
+    return 0;
+}//メイン処理終了
+
+ //データを表示するタグstudentprint変数名data/////////////////////////////////
+ void student_print(student data)
+ {
+   printf( " ID:%d", data.id );
+   printf( " name:%s", data.name );
+   printf( " japanese:%d", data.koku );
+   printf( " mathematics:%d", data.suu );
+   printf( " english:%d　\n", data.ei );
+   return;
+ }
